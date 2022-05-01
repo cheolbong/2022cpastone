@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">City Farmer</string>
+
+    <string-array name="status">
+        <item>온도</item>
+        <item>조도</item>
+        <item>습도</item>
+    </string-array>
+
+    <integer-array name="img">
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+        <item>@drawable/temp</item>
+    </integer-array>
+</resources>
