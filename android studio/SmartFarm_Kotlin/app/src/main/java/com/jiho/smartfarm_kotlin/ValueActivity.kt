@@ -25,16 +25,18 @@ class ValueActivity : AppCompatActivity() {
         val btn_value_cage2 = findViewById<Button>(R.id.btn_value_cage2)
         val btn_value_setting = findViewById<Button>(R.id.btn_value_setting)
         var cage:String? = intent.getStringExtra("cage")
+        var value:String? = intent.getStringExtra("value")
         val text_value_cagenumber = findViewById<TextView>(R.id.text_value_cagenumber)
 
         text_value_cagenumber.text = cage
 
-        text_value_value.text = intent.getStringExtra("value")
+        text_value_value.text = value
 
         btn_value_cage1.setOnClickListener {
             cage = "cage1"
             val intent = Intent(this, ValueActivity::class.java)
             intent.putExtra("cage", cage)
+            intent.putExtra("value", value)
             startActivity(intent)
             finish()
         }
@@ -43,6 +45,7 @@ class ValueActivity : AppCompatActivity() {
             cage = "cage2"
             val intent = Intent(this, ValueActivity::class.java)
             intent.putExtra("cage", cage)
+            intent.putExtra("value", value)
             startActivity(intent)
             finish()
         }
@@ -54,6 +57,7 @@ class ValueActivity : AppCompatActivity() {
 
         btn_value_setting.setOnClickListener {
             val intent = Intent(this, SettingActivity::class.java)
+            intent.putExtra("cage", cage)
             startActivity(intent)
             finish()
         }
