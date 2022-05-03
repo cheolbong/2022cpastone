@@ -11,7 +11,7 @@ import java.net.URL
 
 class LogoActivity : AppCompatActivity() {
 
-    var wt: String? = null
+    var wt: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,9 @@ class LogoActivity : AppCompatActivity() {
     inner class NetworkThread: Thread() {
         override fun run() {
 
-            val site = "http://api.openweathermap.org/data/2.5/weather?lat=33.38&lon=126.60&appid=842fd2fda672b3b53b2c831970e7aa33"
+            val apikey = "842fd2fda672b3b53b2c831970e7aa33"
+
+            val site = "http://api.openweathermap.org/data/2.5/weather?lat=33.38&lon=126.60&appid=${apikey}"
 
             val url = URL(site)
             val conn = url.openConnection()

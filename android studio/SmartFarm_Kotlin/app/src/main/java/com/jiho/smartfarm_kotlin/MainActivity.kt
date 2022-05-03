@@ -23,20 +23,14 @@ class MainActivity : AppCompatActivity() {
         var cage: String?
         var weather: String? = intent.getStringExtra("weather")
 
-        if(weather == "Clear") {
-            img_main_weather.setImageResource(R.drawable.sun)
-        } else if(weather == "Rain") {
-            img_main_weather.setImageResource(R.drawable.rain)
-        } else if(weather == "Snow") {
-            img_main_weather.setImageResource(R.drawable.snow)
-        } else if(weather == "Drizzle") {
-            img_main_weather.setImageResource(R.drawable.drizzle)
-        } else if(weather == "Cloud") {
-            img_main_weather.setImageResource(R.drawable.cloud)
-        } else if(weather == "Thunderstorm") {
-            img_main_weather.setImageResource(R.drawable.thunderstorm)
-        } else {
-            img_main_weather.setImageResource(R.drawable.sun)
+        when(weather) {
+            "Clear" -> img_main_weather.setImageResource(R.drawable.sun)
+            "Rain" -> img_main_weather.setImageResource(R.drawable.rain)
+            "Snow" -> img_main_weather.setImageResource(R.drawable.snow)
+            "Drizzle" -> img_main_weather.setImageResource(R.drawable.drizzle)
+            "Cloud" -> img_main_weather.setImageResource(R.drawable.cloud)
+            "thunderstorm" -> img_main_weather.setImageResource(R.drawable.thunderstorm)
+            else -> img_main_weather.setImageResource(R.drawable.sun)
         }
 
         if(intent.hasExtra("cage")) {
