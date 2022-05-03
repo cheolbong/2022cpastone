@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +19,25 @@ class MainActivity : AppCompatActivity() {
         val btn_main_cage2 = findViewById<Button>(R.id.btn_main_cage2)
         val btn_main_cam = findViewById<Button>(R.id.btn_main_cam)
         val btn_main_setting = findViewById<Button>(R.id.btn_main_setting)
-        var cage:String?
+        val img_main_weather = findViewById<ImageView>(R.id.img_main_weather)
+        var cage: String?
+        var weather: String? = intent.getStringExtra("weather")
+
+        if(weather == "Clear") {
+            img_main_weather.setImageResource(R.drawable.sun)
+        } else if(weather == "Rain") {
+            img_main_weather.setImageResource(R.drawable.rain)
+        } else if(weather == "Snow") {
+            img_main_weather.setImageResource(R.drawable.snow)
+        } else if(weather == "Drizzle") {
+            img_main_weather.setImageResource(R.drawable.drizzle)
+        } else if(weather == "Cloud") {
+            img_main_weather.setImageResource(R.drawable.cloud)
+        } else if(weather == "Thunderstorm") {
+            img_main_weather.setImageResource(R.drawable.thunderstorm)
+        } else {
+            img_main_weather.setImageResource(R.drawable.sun)
+        }
 
         if(intent.hasExtra("cage")) {
             cage = intent.getStringExtra("cage")
