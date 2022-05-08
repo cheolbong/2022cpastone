@@ -41,6 +41,18 @@
         app:layout_constraintTop_toBottomOf="@+id/layout_main_logobar"
         app:srcCompat="@drawable/sun" />
 
+    <TextView
+        android:id="@+id/text_main_temp"
+        android:layout_width="70dp"
+        android:layout_height="31dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/img_main_weather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_main_weather"
+        app:layout_constraintVertical_bias="0.797" />
+
     <ScrollView
         android:id="@+id/scroll_main_value"
         android:layout_width="0dp"
@@ -90,6 +102,12 @@
                     android:layout_height="100dp"
                     android:text="습도" />
 
+                <Button
+                    android:id="@+id/btn_main_cam"
+                    android:layout_width="355dp"
+                    android:layout_height="100dp"
+                    android:text="캠" />
+
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -117,13 +135,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="cage2" />
-
-        <Button
-            android:id="@+id/btn_main_cam"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="캠" />
 
         <ImageButton
             android:id="@+id/btn_main_home"

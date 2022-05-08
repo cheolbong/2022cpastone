@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +23,10 @@ class MainActivity : AppCompatActivity() {
         val img_main_weather = findViewById<ImageView>(R.id.img_main_weather)
         var cage: String?
         var weather: String? = intent.getStringExtra("weather")
+        var temp: String? = intent.getStringExtra("temp")
+        val text_main_tempe = findViewById<TextView>(R.id.text_main_temp)
+
+        text_main_tempe.text = temp + "℃"
 
         when(weather) {
             "Clear" -> img_main_weather.setImageResource(R.drawable.sun)

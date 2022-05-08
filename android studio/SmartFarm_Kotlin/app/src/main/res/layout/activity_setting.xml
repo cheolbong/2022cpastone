@@ -123,13 +123,6 @@
             android:layout_weight="1"
             android:text="cage2" />
 
-        <Button
-            android:id="@+id/btn_setting_cam"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="캠" />
-
         <ImageButton
             android:id="@+id/btn_setting_home"
             android:layout_width="0dp"
