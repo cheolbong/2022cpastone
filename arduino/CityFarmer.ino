@@ -8,44 +8,46 @@
  * 6. 아두이노 딥슬립모드 돌입(30분)
  */
 #include <ESP8266WiFi.h>
+#include <ESP8266HTTPClient.h>
+#include <WiFiClient.h>
 #include <DHT.h>
 
 #define DHTPIN D2
-#define DHTTYPE DHT11
+#define DHTTYPE DHT22
 #define light_relay D3
 #define moisture_relay D4
 #define pen_power D5
 #define led_power D6
 #define moisture_power D7
+#define host "172.20.10.3"
 
 DHT dht(DHTPIN, DHTTYPE);
 
 const char* ssid = "iPhone";
 const char* password = "00000000";
 
-int h;
-int t;
-int cdsValue;
-float moisture_percentage;
-int temp_goal;
-int temp_goal_min;
-int temp_goal_max;
-int moisture_goal;
-int moisture_goal_min;
+int h = 0;
+int t = 0;
+int cdsValue = 0;
+String cage = "case1";
+float moisture_percentage = 0;
+int temp_goal = 0;
+int temp_goal_min = 0;
+int temp_goal_max = 0;
+int moisture_goal = 0;
+int moisture_goal_min = 0;
 
 void setup() {
   Serial.begin(115200);
   Wifi_connect();
+  dht.begin();
   
   pinMode(A0, INPUT);    //온도, 습도, 조도, 토양 수분 값 받아오는 핀
-  pinMode(temp_relay, OUTPUT);   //온도, 습도 릴레이
   pinMode(light_relay, OUTPUT);   //조도 릴레이
   pinMode(moisture_relay, OUTPUT);   //토양 수분 릴레이
   pinMode(pen_power, OUTPUT);   //쿨링펜 작동
   pinMode(led_power, OUTPUT);   //LED 작동
   pinMode(moisture_power, OUTPUT);   //워터펌프 작동
-  
-  dht.begin();
 }
 
 void loop() {
@@ -69,11 +71,44 @@ void loop() {
   Serial.print(moisture_percentage);
   Serial.println("%");
   //토양 수분 센서 끝
+  
+  //데이터베이스에 데이터 보내기 시작
+  WiFiClient client;
+  HTTPClient http;
+
+  if((WiFi.status() == WL_CONNECTED)) {
+    Serial.print("[HTTP] 서버 연결을 시도합니다...");
+    http.begin(client, "http://" host "/insert.php");
+    http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    Serial.print("[HTTP] 수집한 값의 POST 요청을 시도합니다...");
+    String POSTBODY = String("case=case1");
+    POSTBODY.concat(String("&temp="));
+    POSTBODY.concat(t);
+    POSTBODY.concat(String("&moisture="));
+    POSTBODY.concat(h);
+    POSTBODY.concat(String("&illuminance="));
+    POSTBODY.concat(cdsValue);
+    POSTBODY.concat(String("&water="));
+    POSTBODY.concat(moisture_percentage);
+    int httpCode = http.POST(POSTBODY);
+
+    if(httpCode > 0) {
+      Serial.printf("[HTTP] 응답 Code : %d\n", httpCode);
+      if(httpCode == HTTP_CODE_OK) {
+        const String& payload = http.getString();
+        Serial.print("서버로부터 수신된 응답 : ");
+        Serial.print(payload);
+        Serial.print("");
+      }
+    } else {
+      Serial.printf("[HTTP] POST 요청이 실패했습니다. 오류 : %s\n", http.errorToString(httpCode).c_str());
+    }
+    http.end();
+  }
+  //데이터베이스 전송 끝
   /*
    * 온도, 습도, 조도, 토양 수분 값 받아오기
-   */
-  /*
-   * 데이터 베이스 전송
    */
   temp_goal_min = temp_goal - 5;
   temp_goal_max = temp_goal + 5;
@@ -125,15 +160,12 @@ void moisture_value_read(){
 }
 
 void Wifi_connect(){
-  Serial.println("--------------");
-  Serial.println(ssid);
+  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  while(WiFi.status() != WL_CONNECTED){
+  while(WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-  Serial.println();
-  Serial.println("WiFi connected");
-  Serial.print("MY IP address is : ");
-  Serial.println(WiFi.localIP());
+  Serial.println("");
+  Serial.print("WiFi 연결");
 }
