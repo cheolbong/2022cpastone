@@ -10,37 +10,31 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
-        val btn_setting_home = findViewById<ImageButton>(R.id.btn_setting_home)
         val btn_setting_cage1 = findViewById<Button>(R.id.btn_setting_cage1)
         val btn_setting_cage2 = findViewById<Button>(R.id.btn_setting_cage2)
         val btn_setting_complete = findViewById<Button>(R.id.btn_setting_complete)
         val text_setting_cagenumber = findViewById<TextView>(R.id.text_setting_cagenumber)
         val edit_text_setting_temp = findViewById<EditText>(R.id.edit_text_setting_temp)
         val edit_text_setting_water = findViewById<EditText>(R.id.edit_text_setting_water)
-        var cage: String? = intent.getStringExtra("cage")
+        var case: String? = intent.getStringExtra("case")
         var temp_goal = "0"
         var water_goal = "0"
 
-        text_setting_cagenumber.text = cage + " 설정"
+        text_setting_cagenumber.text = case + " 설정"
 
         btn_setting_cage1.setOnClickListener {
-            cage = "cage1"
+            case = "case1"
             val intent = Intent(this, SettingActivity::class.java)
-            intent.putExtra("cage", cage)
+            intent.putExtra("case", case)
             startActivity(intent)
             finish()
         }
 
         btn_setting_cage2.setOnClickListener {
-            cage = "cage2"
+            case = "case2"
             val intent = Intent(this, SettingActivity::class.java)
-            intent.putExtra("cage", cage)
+            intent.putExtra("case", case)
             startActivity(intent)
-            finish()
-        }
-
-        btn_setting_home.setOnClickListener {
-            intent.putExtra("cage", cage)
             finish()
         }
 

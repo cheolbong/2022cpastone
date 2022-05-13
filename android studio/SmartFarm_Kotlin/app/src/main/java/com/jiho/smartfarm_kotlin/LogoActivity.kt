@@ -80,7 +80,7 @@ class LogoActivity : AppCompatActivity() {
         val handler = Handler()
         handler.postDelayed({
             val intent = Intent(baseContext, MainActivity::class.java)
-            intent.putExtra("cage", "cage1")
+            intent.putExtra("case", "case1")
             intent.putExtra("weather", wt)
             intent.putExtra("temp", temp1)
             startActivity(intent)

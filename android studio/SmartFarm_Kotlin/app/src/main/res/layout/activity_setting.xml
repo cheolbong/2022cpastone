@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="SMART FARMER"
+            android:text="CITY FARMER"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
 
     <EditText
         android:id="@+id/edit_text_setting_temp"
-        android:layout_width="402dp"
+        android:layout_width="350dp"
         android:layout_height="65dp"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -67,14 +67,14 @@
 
     <EditText
         android:id="@+id/edit_text_setting_water"
-        android:layout_width="402dp"
+        android:layout_width="350dp"
         android:layout_height="65dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="number|textPersonName"
         android:text="수분"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_setting_water" />
 
@@ -122,15 +122,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="cage2" />
-
-        <ImageButton
-            android:id="@+id/btn_setting_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/home"
-            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn_setting_setting"

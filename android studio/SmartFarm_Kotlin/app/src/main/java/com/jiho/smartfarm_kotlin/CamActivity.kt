@@ -12,40 +12,34 @@ class CamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cam)
 
-        val btn_cam_home = findViewById<ImageButton>(R.id.btn_cam_home)
         val text_cam_cagenumber = findViewById<TextView>(R.id.text_cam_cagenumber)
         val btn_cam_cage1 = findViewById<Button>(R.id.btn_cam_cage1)
         val btn_cam_cage2 = findViewById<Button>(R.id.btn_cam_cage2)
         val btn_cam_setting = findViewById<Button>(R.id.btn_cam_setting)
-        var cage:String? = intent.getStringExtra("cage")
+        var case:String? = intent.getStringExtra("case")
 
-        text_cam_cagenumber.text = cage
+        text_cam_cagenumber.text = case
 
         btn_cam_cage1.setOnClickListener {
-            cage = "cage1"
+            case = "case1"
             val intent = Intent(this, CamActivity::class.java)
-            intent.putExtra("cage", cage)
+            intent.putExtra("case", case)
             startActivity(intent)
             finish()
         }
 
         btn_cam_cage2.setOnClickListener {
-            cage = "cage2"
+            case = "case2"
             val intent = Intent(this, CamActivity::class.java)
-            intent.putExtra("cage", cage)
+            intent.putExtra("case", case)
             startActivity(intent)
             finish()
         }
 
         btn_cam_setting.setOnClickListener {
             val intent = Intent(this, SettingActivity::class.java)
-            intent.putExtra("cage", cage)
+            intent.putExtra("case", case)
             startActivity(intent)
-            finish()
-        }
-
-        btn_cam_home.setOnClickListener {
-            intent.putExtra("cage", cage)
             finish()
         }
     }

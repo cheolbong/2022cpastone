@@ -5,12 +5,14 @@
     android:id="@+id/layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FAFFFFFF"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/layout_main_logobar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="54dp"
         android:background="#3ED0C8"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,22 +38,46 @@
         android:layout_height="246dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_main_logobar"
         app:srcCompat="@drawable/sun" />
 
     <TextView
         android:id="@+id/text_main_temp"
-        android:layout_width="70dp"
-        android:layout_height="31dp"
+        android:layout_width="198dp"
+        android:layout_height="46dp"
         android:text="TextView"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/img_main_weather"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/img_main_weather"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.585" />
+
+    <TextView
+        android:id="@+id/text_main_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="제주도"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_main_temp" />
+
+    <TextView
+        android:id="@+id/text_main_date"
+        android:layout_width="208dp"
+        android:layout_height="25dp"
+        android:text="TextView"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_main_location" />
 
     <ScrollView
         android:id="@+id/scroll_main_value"
@@ -135,15 +161,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="cage2" />
-
-        <ImageButton
-            android:id="@+id/btn_main_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/home"
-            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn_main_setting"

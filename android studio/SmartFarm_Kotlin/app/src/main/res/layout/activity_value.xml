@@ -113,15 +113,6 @@
             android:layout_weight="1"
             android:text="cage2" />
 
-        <ImageButton
-            android:id="@+id/btn_value_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/home"
-            tools:ignore="SpeakableTextPresentCheck" />
-
         <Button
             android:id="@+id/btn_value_setting"
             android:layout_width="0dp"
