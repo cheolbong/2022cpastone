@@ -30,10 +30,22 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/img_value_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="177dp"
+        android:text="temp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_value_logobar" />
+
+    <TextView
         android:id="@+id/text_value_cagenumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:text="cage1"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -45,7 +57,7 @@
         android:id="@+id/layout_value_graph"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,11 +126,11 @@
             android:text="cage2" />
 
         <Button
-            android:id="@+id/btn_value_setting"
+            android:id="@+id/btn_value_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="설정" />
+            android:text="info" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

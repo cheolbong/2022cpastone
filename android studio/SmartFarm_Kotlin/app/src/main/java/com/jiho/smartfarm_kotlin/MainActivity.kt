@@ -21,7 +21,8 @@ class MainActivity : AppCompatActivity() {
         val btn_main_cage1 = findViewById<Button>(R.id.btn_main_cage1)
         val btn_main_cage2 = findViewById<Button>(R.id.btn_main_cage2)
         val btn_main_cam = findViewById<Button>(R.id.btn_main_cam)
-        val btn_main_setting = findViewById<Button>(R.id.btn_main_setting)
+        val btn_main_control = findViewById<Button>(R.id.btn_main_control)
+        val btn_main_info = findViewById<Button>(R.id.btn_main_info)
         val img_main_weather = findViewById<ImageView>(R.id.img_main_weather)
         var case: String?
         var weather: String? = intent.getStringExtra("weather")
@@ -93,8 +94,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btn_main_setting.setOnClickListener {
-            val intent = Intent(this, SettingActivity::class.java)
+        btn_main_control.setOnClickListener {
+            val intent = Intent(this, ControlActivity::class.java)
+            intent.putExtra("case", case)
+            startActivity(intent)
+        }
+
+        btn_main_info.setOnClickListener {
+            val intent = Intent(this, InfoActivity::class.java)
             intent.putExtra("case", case)
             startActivity(intent)
         }

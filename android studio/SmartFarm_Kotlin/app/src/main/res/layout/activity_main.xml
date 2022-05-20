@@ -5,8 +5,6 @@
     android:id="@+id/layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#FAFFFFFF"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -134,6 +132,12 @@
                     android:layout_height="100dp"
                     android:text="캠" />
 
+                <Button
+                    android:id="@+id/btn_main_control"
+                    android:layout_width="355dp"
+                    android:layout_height="100dp"
+                    android:text="제어" />
+
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -163,11 +167,11 @@
             android:text="cage2" />
 
         <Button
-            android:id="@+id/btn_main_setting"
+            android:id="@+id/btn_main_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="설정" />
+            android:text="info" />
 
     </LinearLayout>
 

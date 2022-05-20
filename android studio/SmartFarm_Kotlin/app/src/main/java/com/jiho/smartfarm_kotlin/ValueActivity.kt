@@ -3,20 +3,14 @@ package com.jiho.smartfarm_kotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import okhttp3.OkHttpClient
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
-import java.text.DecimalFormat
 
 class ValueActivity : AppCompatActivity() {
 
@@ -28,7 +22,7 @@ class ValueActivity : AppCompatActivity() {
     var value2:String? = ""
     var date:String? = ""
     val list:MutableList<RecycleData> = mutableListOf()
-    val host:String = "192.168.4.59"
+    val host:String = "192.168.4.64"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +31,28 @@ class ValueActivity : AppCompatActivity() {
         val text_value_value = findViewById<TextView>(R.id.text_value_value)
         val btn_value_cage1 = findViewById<Button>(R.id.btn_value_cage1)
         val btn_value_cage2 = findViewById<Button>(R.id.btn_value_cage2)
-        val btn_value_setting = findViewById<Button>(R.id.btn_value_setting)
+        val btn_value_info = findViewById<Button>(R.id.btn_value_info)
         val text_value_cagenumber = findViewById<TextView>(R.id.text_value_cagenumber)
+        val img_value_value = findViewById<TextView>(R.id.img_value_value)
         case = intent.getStringExtra("case")
         value = intent.getStringExtra("value")
         when(value){
-            "온도" -> value1 = "temp"
-            "조도" -> value1 = "illuminance"
-            "수분" -> value1 = "water"
-            "습도" -> value1 = "moisture"
+            "온도" -> {
+                value1 = "temp"
+                img_value_value.text = "temp"
+            }
+            "조도" -> {
+                value1 = "illuminance"
+                img_value_value.text = "illuminance"
+            }
+            "수분" -> {
+                value1 = "water"
+                img_value_value.text = "water"
+            }
+            "습도" -> {
+                value1 = "moisture"
+                img_value_value.text = "moisture"
+            }
         }
 
         text_value_cagenumber.text = case
@@ -70,8 +77,8 @@ class ValueActivity : AppCompatActivity() {
             finish()
         }
 
-        btn_value_setting.setOnClickListener {
-            val intent = Intent(this, SettingActivity::class.java)
+        btn_value_info.setOnClickListener {
+            val intent = Intent(this, InfoActivity::class.java)
             intent.putExtra("case", case)
             startActivity(intent)
             finish()

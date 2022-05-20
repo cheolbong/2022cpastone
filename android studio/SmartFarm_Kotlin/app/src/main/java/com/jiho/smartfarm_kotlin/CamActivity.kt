@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
 
 class CamActivity : AppCompatActivity() {
@@ -15,7 +14,7 @@ class CamActivity : AppCompatActivity() {
         val text_cam_cagenumber = findViewById<TextView>(R.id.text_cam_cagenumber)
         val btn_cam_cage1 = findViewById<Button>(R.id.btn_cam_cage1)
         val btn_cam_cage2 = findViewById<Button>(R.id.btn_cam_cage2)
-        val btn_cam_setting = findViewById<Button>(R.id.btn_cam_setting)
+        val btn_cam_info = findViewById<Button>(R.id.btn_cam_info)
         var case:String? = intent.getStringExtra("case")
 
         text_cam_cagenumber.text = case
@@ -36,8 +35,8 @@ class CamActivity : AppCompatActivity() {
             finish()
         }
 
-        btn_cam_setting.setOnClickListener {
-            val intent = Intent(this, SettingActivity::class.java)
+        btn_cam_info.setOnClickListener {
+            val intent = Intent(this, InfoActivity::class.java)
             intent.putExtra("case", case)
             startActivity(intent)
             finish()

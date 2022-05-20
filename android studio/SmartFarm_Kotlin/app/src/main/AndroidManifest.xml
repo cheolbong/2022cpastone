@@ -2,24 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jiho.smartfarm_kotlin">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-
-        android:networkSecurityConfig="@xml/network_security_config"
-        android:usesCleartextTraffic="true"
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmartFarm_Kotlin">
+        android:theme="@style/Theme.SmartFarm_Kotlin"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".InfoActivity"
+            android:exported="false" />
         <activity
             android:name=".CamActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".ControlActivity"
             android:exported="false" />
         <activity
             android:name=".LogoActivity"
