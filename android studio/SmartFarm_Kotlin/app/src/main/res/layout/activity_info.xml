@@ -7,26 +7,102 @@
     android:layout_height="match_parent"
     tools:context=".InfoActivity">
 
-    <LinearLayout
-        android:id="@+id/layout_info_logobar"
+    <ImageButton
+        android:id="@+id/btn_info_back"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/back_image"
+        android:elevation="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/img_info_logo"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:background="#3ED0C8"
-        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/topbar_cityfarm_logo_imge" />
 
-        <TextView
-            android:id="@+id/text_info_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+    <ImageView
+        android:id="@+id/img_info_info"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/info_top_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_info_logo" />
+
+    <TextView
+        android:id="@+id/text_info_info"
+        android:layout_width="342dp"
+        android:layout_height="193dp"
+        android:layout_marginTop="30dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_info_info" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
+
+        <ImageButton
+            android:id="@+id/btn_info_cage1"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="CITY FARMER"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:background="@drawable/cage1_select_button_gray"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <ImageButton
+            android:id="@+id/btn_info_cage2"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:background="@drawable/cage2_select_button_gray"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <ImageButton
+            android:id="@+id/btn_info_info"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/info_select_button"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

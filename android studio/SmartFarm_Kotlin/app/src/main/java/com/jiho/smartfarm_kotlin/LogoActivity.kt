@@ -31,8 +31,8 @@ class LogoActivity : AppCompatActivity() {
         override fun run() {
 
             val apikey = "842fd2fda672b3b53b2c831970e7aa33"
-            val lat = "33.38"
-            val lon = "126.60"
+            val lat = "33.11"
+            val lon = "126.08"
 
             val site = "http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}"
 
@@ -62,7 +62,7 @@ class LogoActivity : AppCompatActivity() {
                 val jObject2 = root.getJSONObject("main")
                 t = JSON_Parse(jObject2, "temp")
                 val df1 = DecimalFormat("00")
-                val temp = df1.format(t!!.toFloat() - 273F)
+                val temp = df1.format(t!!.toFloat() - 270F)
                 temp1 = temp.toString()
             }
         }

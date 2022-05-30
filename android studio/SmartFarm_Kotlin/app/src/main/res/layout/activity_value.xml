@@ -7,130 +7,127 @@
     android:layout_height="match_parent"
     tools:context=".ValueActivity">
 
-    <LinearLayout
-        android:id="@+id/layout_value_logobar"
+    <ImageButton
+        android:id="@+id/btn_value_back"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/back_image"
+        android:elevation="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/img_value_logo"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#3ED0C8"
-        android:orientation="horizontal"
+        android:layout_height="54dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:background="@drawable/topbar_cityfarm_logo_imge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/text_value_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="CITY FARMER"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <TextView
+    <ImageView
         android:id="@+id/img_value_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="177dp"
-        android:text="temp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_value_logobar" />
-
-    <TextView
-        android:id="@+id/text_value_cagenumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="cage1"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_value_logobar" />
-
-    <LinearLayout
-        android:id="@+id/layout_value_graph"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="100dp"
-        android:orientation="horizontal"
+        android:layout_height="42dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/temptable_text_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_value_logobar">
+        app:layout_constraintTop_toBottomOf="@+id/img_value_logo" />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3" />
+    <ImageView
+        android:id="@+id/img_value_casenumber"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/cage1_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_value_value" />
 
-        <TextView
-            android:id="@+id/text_value_time"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:background="@drawable/blackborder"
-            android:gravity="center"
-            android:text="시간대" />
-
-        <TextView
-            android:id="@+id/text_value_value"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/blackborder"
-            android:gravity="center"
-            android:text="온도" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_valu_value"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/temperature_table"
         app:layout_constraintBottom_toTopOf="@+id/layout_value_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_value_graph" />
+        app:layout_constraintTop_toBottomOf="@+id/img_value_casenumber">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/layout_value_menu"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
+
+        <ImageButton
             android:id="@+id/btn_value_cage1"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="37dp"
             android:layout_weight="1"
-            android:text="cage1" />
+            android:background="@drawable/case1_push_button"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-        <Button
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <ImageButton
             android:id="@+id/btn_value_cage2"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="37dp"
             android:layout_weight="1"
-            android:text="cage2" />
+            android:background="@drawable/case2_button"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-        <Button
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <ImageButton
             android:id="@+id/btn_value_info"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="35dp"
             android:layout_weight="1"
-            android:text="info" />
+            android:background="@drawable/info_button"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

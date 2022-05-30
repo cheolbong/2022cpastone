@@ -3,9 +3,13 @@ package com.jiho.smartfarm_kotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.URL
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -14,36 +18,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btn_main_temp = findViewById<Button>(R.id.btn_main_temp)
-        val btn_main_light = findViewById<Button>(R.id.btn_main_light)
-        val btn_main_moisture = findViewById<Button>(R.id.btn_main_moisture)
-        val btn_main_humidity = findViewById<Button>(R.id.btn_main_humidity)
-        val btn_main_cage1 = findViewById<Button>(R.id.btn_main_cage1)
-        val btn_main_cage2 = findViewById<Button>(R.id.btn_main_cage2)
-        val btn_main_cam = findViewById<Button>(R.id.btn_main_cam)
-        val btn_main_control = findViewById<Button>(R.id.btn_main_control)
-        val btn_main_info = findViewById<Button>(R.id.btn_main_info)
+        val btn_main_temp = findViewById<ImageButton>(R.id.btn_main_temp)
+        val btn_main_illuminance = findViewById<ImageButton>(R.id.btn_main_illuminance)
+        val btn_main_soil = findViewById<ImageButton>(R.id.btn_main_soil)
+        val btn_main_humidity = findViewById<ImageButton>(R.id.btn_main_humidity)
+        val btn_main_cage1 = findViewById<ImageButton>(R.id.btn_main_cage1)
+        val btn_main_cage2 = findViewById<ImageButton>(R.id.btn_main_cage2)
+        val btn_main_cam = findViewById<ImageButton>(R.id.btn_main_cam)
+        val btn_main_control = findViewById<ImageButton>(R.id.btn_main_control)
+        val btn_main_info = findViewById<ImageButton>(R.id.btn_main_info)
         val img_main_weather = findViewById<ImageView>(R.id.img_main_weather)
-        var case: String?
+        val img_main_cage = findViewById<ImageView>(R.id.img_main_cage)
         var weather: String? = intent.getStringExtra("weather")
         var temp: String? = intent.getStringExtra("temp")
         val text_main_tempe = findViewById<TextView>(R.id.text_main_temp)
         val text_main_date = findViewById<TextView>(R.id.text_main_date)
+        var case: String? = ""
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일")
         val formatted = current.format(formatter)
 
         text_main_tempe.text = temp + "℃"
-        text_main_date.text = formatted
+        text_main_date.text = "제주도\n" + formatted
 
         when(weather) {
-            "Clear" -> img_main_weather.setImageResource(R.drawable.sun)
-            "Rain" -> img_main_weather.setImageResource(R.drawable.rain)
-            "Snow" -> img_main_weather.setImageResource(R.drawable.snow)
-            "Drizzle" -> img_main_weather.setImageResource(R.drawable.drizzle)
-            "Clouds" -> img_main_weather.setImageResource(R.drawable.cloud)
-            "thunderstorm" -> img_main_weather.setImageResource(R.drawable.thunderstorm)
-            else -> img_main_weather.setImageResource(R.drawable.sun)
+            "Clear" -> img_main_weather.setImageResource(R.drawable.sunny_image)
+            "Rain" -> img_main_weather.setImageResource(R.drawable.rain_image)
+            "Snow" -> img_main_weather.setImageResource(R.drawable.snow_image)
+            "Drizzle" -> img_main_weather.setImageResource(R.drawable.raincloud_image)
+            "Clouds" -> img_main_weather.setImageResource(R.drawable.cloud_image)
+            "thunderstorm" -> img_main_weather.setImageResource(R.drawable.thunder_image)
+            else -> img_main_weather.setImageResource(R.drawable.sunny_image)
         }
 
         if(intent.hasExtra("case")) {
@@ -54,10 +59,16 @@ class MainActivity : AppCompatActivity() {
 
         btn_main_cage1.setOnClickListener {
             case = "case1"
+            img_main_cage.setBackgroundResource(R.drawable.cage1_main)
+            btn_main_cage1.setBackgroundResource(R.drawable.case1_push_button)
+            btn_main_cage2.setBackgroundResource(R.drawable.case2_button)
         }
 
         btn_main_cage2.setOnClickListener {
             case = "case2"
+            img_main_cage.setBackgroundResource(R.drawable.cage2_main)
+            btn_main_cage2.setBackgroundResource(R.drawable.case2_push_button)
+            btn_main_cage1.setBackgroundResource(R.drawable.case1_button)
         }
 
         btn_main_temp.setOnClickListener {
@@ -67,16 +78,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btn_main_light.setOnClickListener {
+        btn_main_illuminance.setOnClickListener {
             val intent = Intent(this, ValueActivity::class.java)
             intent.putExtra("value", "조도")
             intent.putExtra("case" , case)
             startActivity(intent)
         }
 
-        btn_main_moisture.setOnClickListener {
+        btn_main_soil.setOnClickListener {
             val intent = Intent(this, ValueActivity::class.java)
-            intent.putExtra("value", "수분")
+            intent.putExtra("value", "토양")
             intent.putExtra("case" , case)
             startActivity(intent)
         }

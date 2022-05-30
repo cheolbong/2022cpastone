@@ -2,133 +2,205 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_setting"
+    android:id="@+id/layout_control"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ControlActivity">
 
-    <LinearLayout
-        android:id="@+id/layout_setting_logobar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#3ED0C8"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/text_setting_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="CITY FARMER"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/text_setting_cagenumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/btn_control_back"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="cage1 설정"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:background="@drawable/back_image"
+        android:elevation="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageView
+        android:id="@+id/img_control_logo"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_setting_logobar" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/topbar_cityfarm_logo_imge" />
+
+    <ImageView
+        android:id="@+id/img_control_controlsystem"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="13dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_control_logo"
+        app:srcCompat="@drawable/controlsystem_text" />
+
+    <ImageView
+        android:id="@+id/img_control_casenumber"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/cage1_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_control_controlsystem" />
+
+    <ImageView
+        android:id="@+id/img_control_temp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/temperature_setting_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_control_casenumber" />
+
+    <ImageView
+        android:id="@+id/img_control_temp_setupbox"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/setup_empty_blank"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_control_temp" />
 
     <EditText
-        android:id="@+id/edit_text_setting_temp"
-        android:layout_width="350dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/edit_text_control_temp"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="number|textPersonName"
         android:text="온도"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_setting_temp" />
+        app:layout_constraintTop_toBottomOf="@+id/img_control_temp"
+        tools:ignore="TouchTargetSizeCheck" />
 
-    <TextView
-        android:id="@+id/text_setting_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="온도 설정(숫자만 입력하세요)"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
+    <ImageButton
+        android:id="@+id/btn_control_complete_temp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/setup_button"
+        app:layout_constraintStart_toEndOf="@+id/img_control_temp_setupbox"
+        app:layout_constraintTop_toBottomOf="@+id/img_control_temp"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageView
+        android:id="@+id/img_control_soil"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/soil_setting_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_setting_cagenumber" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_control_temp" />
+
+    <ImageView
+        android:id="@+id/img_control_soil_setupbox"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/setup_empty_blank"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_control_soil" />
 
     <EditText
-        android:id="@+id/edit_text_setting_water"
-        android:layout_width="350dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/edit_text_control_water"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="number|textPersonName"
         android:text="수분"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_setting_water" />
+        app:layout_constraintTop_toBottomOf="@+id/img_control_soil"
+        tools:ignore="TouchTargetSizeCheck" />
 
-    <Button
-        android:id="@+id/btn_setting_complete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="설정 완료"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_setting_water" />
+    <ImageButton
+        android:id="@+id/btn_control_complete_water"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/setup_button"
+        app:layout_constraintStart_toEndOf="@+id/img_control_soil_setupbox"
+        app:layout_constraintTop_toBottomOf="@+id/img_control_soil"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/text_setting_water"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="수분 설정(숫자만 입력하세요)"
+        android:id="@+id/text_control_info"
+        android:layout_width="277dp"
+        android:layout_height="209dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="적정 온도 : 15 ~ 20\n적정 수분 : 300 ~ 700"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_setting_temp" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_control_water" />
 
     <LinearLayout
-        android:id="@+id/layout_setting_menu"
+        android:id="@+id/layout_control_menu"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/btn_setting_cage1"
+        <Space
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="cage1" />
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
 
-        <Button
-            android:id="@+id/btn_setting_cage2"
+        <ImageButton
+            android:id="@+id/btn_control_cage1"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="37dp"
             android:layout_weight="1"
-            android:text="cage2" />
+            android:background="@drawable/case1_push_button"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-        <Button
-            android:id="@+id/btn_setting_setting"
+        <Space
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <ImageButton
+            android:id="@+id/btn_control_cage2"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
             android:layout_weight="1"
-            android:text="설정" />
+            android:background="@drawable/case2_button"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <ImageButton
+            android:id="@+id/btn_control_info"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/info_button"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

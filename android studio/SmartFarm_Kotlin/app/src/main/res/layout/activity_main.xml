@@ -5,86 +5,75 @@
     android:id="@+id/layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/layout_main_logobar"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/img_main_logo"
+        android:layout_width="wrap_content"
         android:layout_height="54dp"
-        android:background="#3ED0C8"
-        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:background="@drawable/topbar_cityfarm_logo_imge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/text_main_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="CITY FARMER"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/img_main_weather"
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="246dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/wind_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_main_logobar"
-        app:srcCompat="@drawable/sun" />
+        app:layout_constraintTop_toBottomOf="@+id/img_main_logo" />
 
     <TextView
         android:id="@+id/text_main_temp"
         android:layout_width="198dp"
         android:layout_height="46dp"
-        android:text="TextView"
+        android:gravity="left"
+        android:text="15℃"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/img_main_weather"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/img_main_weather"
-        app:layout_constraintVertical_bias="0.585" />
-
-    <TextView
-        android:id="@+id/text_main_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="제주도"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_main_temp" />
+        app:layout_constraintVertical_bias="0.605" />
 
     <TextView
         android:id="@+id/text_main_date"
         android:layout_width="208dp"
-        android:layout_height="25dp"
+        android:layout_height="50dp"
+        android:gravity="left"
         android:text="TextView"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.381"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_main_location" />
+        app:layout_constraintTop_toBottomOf="@+id/text_main_temp" />
+
+    <ImageView
+        android:id="@+id/img_main_cage"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/cage1_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_main_weather" />
 
     <ScrollView
         android:id="@+id/scroll_main_value"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="3dp"
         app:layout_constraintBottom_toTopOf="@+id/layout_main_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_main_weather">
+        app:layout_constraintTop_toBottomOf="@+id/img_main_cage">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_main_value"
@@ -102,41 +91,47 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <Button
+                <ImageButton
                     android:id="@+id/btn_main_temp"
-                    android:layout_width="355dp"
-                    android:layout_height="100dp"
-                    android:text="온도" />
+                    android:layout_width="330dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/temp_image"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
-                <Button
-                    android:id="@+id/btn_main_light"
-                    android:layout_width="355dp"
-                    android:layout_height="100dp"
-                    android:text="조도" />
-
-                <Button
-                    android:id="@+id/btn_main_moisture"
-                    android:layout_width="355dp"
-                    android:layout_height="100dp"
-                    android:text="수분" />
-
-                <Button
+                <ImageButton
                     android:id="@+id/btn_main_humidity"
-                    android:layout_width="355dp"
-                    android:layout_height="100dp"
-                    android:text="습도" />
+                    android:layout_width="330dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/humidity_image"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
-                <Button
+                <ImageButton
+                    android:id="@+id/btn_main_illuminance"
+                    android:layout_width="330dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/illuminance_image"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <ImageButton
+                    android:id="@+id/btn_main_soil"
+                    android:layout_width="330dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/soil_image"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <ImageButton
                     android:id="@+id/btn_main_cam"
-                    android:layout_width="355dp"
-                    android:layout_height="100dp"
-                    android:text="캠" />
+                    android:layout_width="330dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/cam_image"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/btn_main_control"
-                    android:layout_width="355dp"
-                    android:layout_height="100dp"
-                    android:text="제어" />
+                    android:layout_width="330dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/control_image"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </LinearLayout>
 
@@ -146,32 +141,56 @@
     <LinearLayout
         android:id="@+id/layout_main_menu"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
+
+        <ImageButton
             android:id="@+id/btn_main_cage1"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="37dp"
             android:layout_weight="1"
-            android:text="cage1" />
+            android:background="@drawable/case1_push_button"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <ImageButton
             android:id="@+id/btn_main_cage2"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="37dp"
             android:layout_weight="1"
-            android:text="cage2" />
+            android:background="@drawable/case2_button"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <ImageButton
             android:id="@+id/btn_main_info"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="35dp"
             android:layout_weight="1"
-            android:text="info" />
+            android:background="@drawable/info_button"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
 
     </LinearLayout>
 
