@@ -10,10 +10,8 @@
 /* 핀 지정
  *  
  * D2 -> dht 센서
- * D3 -> 조도 센서 릴레이 핀
- * D4 -> 토양 수분 릴레이 핀
+ * D3 -> 릴레이 핀
  * D5 -> 모터 펜 릴레이 핀
- * D6 -> LED 전원 릴레이 핀
  * D7 -> 워터 펌프 드라이버 B-1A 핀
  * D8 -> 워터 펌프 드라이버 B-2A 핀
  * D0 -> RES
@@ -26,8 +24,7 @@
 
 #define DHTPIN D2
 #define DHTTYPE DHT22
-#define light_relay D3
-#define moisture_relay D4
+#define relay D3
 #define pen_power D5
 #define led_power D6
 #define moisture_power_a D7
@@ -42,13 +39,12 @@ const char* password = "00000000";
 int h = 0;
 int t = 0;
 int cdsValue = 0;
-String cage = "case1";
 float moisture_percentage = 0;
 int temp_goal = 0;
 int temp_goal_min = 0;
 int temp_goal_max = 0;
 int moisture_goal = 0;
-int moisture_goal_min = 0;
+int moisture_goal_max = 0;
 int count = 6;
 unsigned long lastTime = 0;
 unsigned long timerDelay = 10000;
@@ -66,8 +62,7 @@ void setup() {
   dht.begin();
   
   pinMode(A0, INPUT);    //온도, 습도, 조도, 토양 수분 값 받아오는 핀
-  pinMode(light_relay, OUTPUT);   //조도 릴레이
-  pinMode(moisture_relay, OUTPUT);   //토양 수분 릴레이
+  pinMode(relay, OUTPUT);   //조도 릴레이
   pinMode(pen_power, OUTPUT);   //쿨링펜 작동
   pinMode(led_power, OUTPUT);   //LED 작동
   pinMode(moisture_power_a, OUTPUT);   //워터펌프 작동
@@ -133,65 +128,63 @@ void loop() {
   }
   //데이터베이스 전송 끝
   //온도, 토양 수분 값 받아오기 시작
-  if((millis() - lastTime) > timerDelay) {
-    if(WiFi.status() == WL_CONNECTED) {
-      String serverPath = "http://172.20.10.3/jsongoal1.php";
-      http.begin(client, serverPath);
-      int httpCode = http.GET();
-      jsonBuffer = http.getString();
-      JSONVar myObject = JSON.parse(jsonBuffer);
-      if(JSON.typeof(myObject) == "undefined") {
-        Serial.println("파싱하지 못했습니다.");
-        return;
-      }
-      http.end();
-
-      int start_point = jsonBuffer.indexOf("temp\":\"");
-      int end_point1 = jsonBuffer.indexOf("\",\"water");
-      int end_point2 = jsonBuffer.indexOf("\"}]}");
-      temp_goal_str = jsonBuffer.substring(start_point+7, end_point1);
-      moisture_goal_str = jsonBuffer.substring(start_point+20, end_point2);
-      Serial.println("목표 온도 : " + temp_goal_str);
-      Serial.println("목표 수분 : " + moisture_goal_str);
-    } else {
-      Serial.println("WiFi에 연결되어 있지 않습니다.");
+  if(WiFi.status() == WL_CONNECTED) {
+    String serverPath = "http://172.20.10.3/jsongoal1.php";
+    http.begin(client, serverPath);
+    int httpCode = http.GET();
+    jsonBuffer = http.getString();
+    JSONVar myObject = JSON.parse(jsonBuffer);
+    if(JSON.typeof(myObject) == "undefined") {
+      Serial.println("파싱하지 못했습니다.");
+      return;
     }
-    lastTime = millis();
+    http.end();
+
+    int start_point = jsonBuffer.indexOf("temp\":\"");
+    int end_point1 = jsonBuffer.indexOf("\",\"water");
+    int end_point2 = jsonBuffer.indexOf("\"}]}");
+    temp_goal_str = jsonBuffer.substring(start_point+7, end_point1);
+    moisture_goal_str = jsonBuffer.substring(start_point+20, end_point2);
+    Serial.println("목표 온도 : " + temp_goal_str);
+    Serial.println("목표 수분 : " + moisture_goal_str);
+  } else {
+    Serial.println("WiFi에 연결되어 있지 않습니다.");
   }
 
   temp_goal = temp_goal_str.toInt();
   moisture_goal = moisture_goal_str.toInt();
   //온도, 토양 수분 값 받아오기 끝
   //목표 온도, 토양 수분 맞추기 시작
-  temp_goal_min = temp_goal - 5;
   temp_goal_max = temp_goal + 5;
-  moisture_goal_min = moisture_goal - 50;
-  
-  while( t <= temp_goal_max || t <= temp_goal_min ){
-    while( moisture_percentage <= moisture_goal_min ){
+  temp_goal_min = temp_goal - 5;
+
+  if(moisture_percentage >= moisture_goal) {
+    for(int i = 0; i < 10; i++) {
       moisture_value_read();
-      if(moisture_percentage <= moisture_goal_min){
-        digitalWrite(moisture_power_a, HIGH);
-        digitalWrite(moisture_power_b, LOW);
-      }else{
-        digitalWrite(moisture_power_a, LOW);
-        digitalWrite(moisture_power_b, LOW);
+      digitalWrite(moisture_power_a, HIGH);
+      digitalWrite(moisture_power_b, LOW);
+      if(moisture_percentage <= moisture_goal) {
         break;
       }
-      delay(5000);
-    }
-    temp_value_read();
-    if(t >= temp_goal_max){
-      digitalWrite(pen_power, HIGH);
-    }else if(t<= temp_goal_min){
-      digitalWrite(led_power, HIGH);
-    }else{
-      digitalWrite(pen_power, LOW);
-      digitalWrite(led_power, LOW);
+      delay(1000);
     }
   }
+  digitalWrite(moisture_power_a, LOW);
+  digitalWrite(moisture_power_b, LOW);
+
+  if(t >= temp_goal_max){
+    digitalWrite(pen_power, HIGH);
+    digitalWrite(led_power, LOW);
+  } else if(t <= temp_goal_min) {
+    digitalWrite(led_power, HIGH);
+    digitalWrite(pen_power, LOW);
+  } else {
+    digitalWrite(pen_power, LOW);
+    digitalWrite(led_power, LOW);
+  }
   //목표 온도, 토양 수분 맞추기 끝
-  ESP.deepSleep(600e6);   //아두이노 딥슬립 모드 돌입
+  delay(10000);
+  //ESP.deepSleep(600e6);   //아두이노 딥슬립 모드 돌입
 }
 
 void temp_value_read(){   //온도, 습도 받아오는 함수
@@ -204,15 +197,15 @@ void temp_value_read(){   //온도, 습도 받아오는 함수
 }
 
 void light_value_read(){    //조도 받아오는 함수
-  digitalWrite(light_relay, HIGH);
+  digitalWrite(relay, HIGH);
+  delay(1000);
   cdsValue = analogRead(A0);
-  digitalWrite(light_relay, LOW);
 }
 
 void moisture_value_read(){   //토양 수분 받아오는 함수
-  digitalWrite(moisture_relay, HIGH);
-  moisture_percentage = ( 100.00 - ( ( analogRead(A0) / 1023.00 ) * 100.00 ) );
-  digitalWrite(moisture_relay, LOW);
+  digitalWrite(relay, LOW);
+  delay(1000);
+  moisture_percentage = analogRead(A0);
 }
 
 void Wifi_connect(){    //와이파이 연결하는 함수
