@@ -15,7 +15,7 @@ import java.net.URL
 class ControlActivity : AppCompatActivity() {
 
     var case: String? = ""
-    val host: String = "192.168.4.71"
+    val host: String = "172.20.10.3"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

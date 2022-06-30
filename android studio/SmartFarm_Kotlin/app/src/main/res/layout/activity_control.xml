@@ -143,7 +143,7 @@
         android:layout_height="209dp"
         android:layout_marginTop="36dp"
         android:gravity="center"
-        android:text="적정 온도 : 15 ~ 20\n적정 수분 : 300 ~ 700"
+        android:text="적정 온도 : 15 ~ 20\n마른 수분 : 700~1000\n적정 수분 : 500 ~ 700\n과한 수분 : 0~500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_control_water" />

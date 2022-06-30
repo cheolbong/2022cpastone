@@ -6,4 +6,30 @@
         <item>조도</item>
         <item>습도</item>
     </string-array>
+    <string name="ss">This application is Copyright © (owner name). All rights reserved. \n \n
+
+        The following sets forth attribution notices for third party software that may be contained in this application. \n \n
+
+        Android - platform - frameworks - support \n
+
+        Android Constraint Layout Library \n
+
+        Android Material Components \n
+
+        CircleImageView \n
+
+        Google API for Android \n
+
+        Google Gson \n
+
+        Square OkHttp \n
+
+        Square Retrofit \n
+
+        Copyright 2013 Square, Inc \n
+
+        Apache License 2.0 \n
+
+        https://github.com/cheolbong/2022cpastone</string>
+
 </resources>

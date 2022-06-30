@@ -26,7 +26,7 @@ class ValueActivity : AppCompatActivity() {
     var value2:String? = ""
     var date:String? = ""
     val list:MutableList<RecycleData> = mutableListOf()
-    val host:String = "192.168.4.71"
+    val host:String = "172.20.10.3"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_cam_cam" />
 
-    <VideoView
+    <ImageView
         android:id="@+id/view_cam_cam"
         android:layout_width="268dp"
         android:layout_height="355dp"
@@ -56,16 +56,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_cam_casenumber" />
-
-    <ImageButton
-        android:id="@+id/btn_cam_ai"
-        android:layout_width="286dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/ai_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_cam_cam" />
 
     <LinearLayout
         android:id="@+id/layout_cam_menu"
